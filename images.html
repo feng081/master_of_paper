@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据图表展示</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('http://121.41.123.104/static/image/photo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .back-button button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .back-button button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            background: rgba(248, 249, 250, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-label {
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #444;
+            font-size: 18px;
+        }
+
+        .image-wrapper {
+            text-align: center;
+        }
+
+        .image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .no-image {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .image-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-chart-bar"></i> 数据图表展示</h1>
+        </div>
+
+        <div class="back-button">
+            <button onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> 返回检索页面
+            </button>
+        </div>
+
+        <div class="image-gallery">
+            <div class="image-container">
+                <div class="image-label">
+                    <i class="fas fa-chart-bar"></i> 数据图表 1
+                </div>
+                <div class="image-wrapper">
+                    <img id="image1" src="" alt="数据图表 1">
+                </div>
+            </div>
+
+            <div class="image-container">
+                <div class="image-label">
+                    <i class="fas fa-chart-pie"></i> 数据图表 2
+                </div>
+                <div class="image-wrapper">
+                    <img id="image2" src="" alt="数据图表 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 从localStorage获取图片URL
+        const image1Url = localStorage.getItem('image1Url');
+        const image2Url = localStorage.getItem('image2Url');
+
+        // 显示图片
+        const image1Element = document.getElementById('image1');
+        const image2Element = document.getElementById('image2');
+
+        if (image1Url) {
+            image1Element.src = image1Url;
+        } else {
+            image1Element.parentElement.innerHTML = '<div class="no-image">未找到图表 1</div>';
+        }
+
+        if (image2Url) {
+            image2Element.src = image2Url;
+        } else {
+            image2Element.parentElement.innerHTML = '<div class="no-image">未找到图表 2</div>';
+        }
+
+        // 返回按钮功能
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

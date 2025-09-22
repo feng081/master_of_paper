@@ -1,0 +1,15 @@
+# 基础依赖（兼容 CentOS 7）
+pandas==2.3.1
+flask==3.1.1
+requests==2.31.0
+urllib3==1.26.20
+openpyxl==3.1.5
+openai==1.99.6
+
+# 可选：如果你用到其他包，也建议锁定版本
+certifi==2025.8.3
+charset-normalizer==3.4.3
+idna==3.10
+numpy==2.0.2
+pydantic==2.11.7
+typing_extensions==4.11.0
